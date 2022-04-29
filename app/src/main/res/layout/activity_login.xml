@@ -12,6 +12,26 @@
         android:orientation="vertical"
         android:padding="@dimen/_15sdp">
 
+        <TextView
+            android:id="@+id/btn_kembali"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginVertical="@dimen/_15sdp"
+            android:text="Kembali"
+            android:textColor="#636262"
+            android:textSize="@dimen/_12sdp"
+            android:drawableStart="@drawable/ic_baseline_arrow_back_ios_24"/>
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/logo_horizontal"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_marginBottom="@dimen/_20sdp"/>
+
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -49,7 +69,7 @@
             android:layout_marginVertical="@dimen/_15sdp"
             android:text="Forgot Password?"
             android:textColor="@color/colorPrimaryVariant"
-            android:textSize="@dimen/_11sdp" />
+            android:textSize="@dimen/_11ssp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_login"

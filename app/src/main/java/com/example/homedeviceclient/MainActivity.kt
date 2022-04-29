@@ -10,14 +10,18 @@ import com.example.homedeviceclient.fragment.AccountFragment
 import com.example.homedeviceclient.fragment.CartFragment
 import com.example.homedeviceclient.fragment.CategoryFragment
 import com.example.homedeviceclient.fragment.HomeFragment
+import com.example.homedeviceclient.helper.SharedPrefs
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     val frags: ArrayList<Fragment> = ArrayList()
     private var loggedIn = false
+    private lateinit var s:SharedPrefs
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        s = SharedPrefs(this)
 
         with(frags) {
             add(HomeFragment())
@@ -42,7 +46,7 @@ class MainActivity : AppCompatActivity() {
             } else if(it.itemId == R.id.itemCart) {
                 viewPager.currentItem = 2
             } else {
-                if (loggedIn) {
+                if (s.getStatusLogin()) {
                     viewPager.currentItem = 3
                 } else {
                     startActivity(Intent(this, LoginActivity::class.java))
