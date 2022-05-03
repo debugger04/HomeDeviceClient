@@ -37,21 +37,54 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginVertical="@dimen/_15sdp"
-            android:text="Masuk"
+            android:text="Pendaftaran"
             android:textSize="@dimen/_15ssp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/txtEmail"
+                android:id="@+id/txtNamaReg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
+                android:hint="Nama Lengkap"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtEmailReg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:background="@color/white"
                 android:hint="E-mail"
                 android:inputType="textEmailAddress" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtDatePickerReg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:background="@color/white"
+                android:editable="true"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:hint="Tanggal Lahir"
+                tools:ignore="Deprecated" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -61,7 +94,7 @@
             app:passwordToggleEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/txtPassword"
+                android:id="@+id/txtPasswordReg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_20sdp"
@@ -71,86 +104,20 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_marginVertical="@dimen/_15sdp"
-            android:text="Lupa Password?"
-            android:textColor="@color/colorPrimaryVariant"
-            android:textSize="@dimen/_11ssp" />
-
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_login"
+            android:id="@+id/btn_register"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_45sdp"
-            android:text="Masuk"
+            android:layout_marginVertical="@dimen/_15sdp"
+            android:text="Daftar"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="@dimen/_13sdp" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="@dimen/_15sdp">
-
-            <View
-                android:id="@+id/leftLine"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_centerVertical="true"
-                android:layout_toLeftOf="@+id/text1"
-                android:background="#C5C5C5" />
-
-            <TextView
-                android:id="@+id/text1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_gravity="end"
-                android:layout_marginStart="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_marginEnd="@dimen/_10sdp"
-                android:layout_marginBottom="@dimen/_10sdp"
-                android:text="atau"
-                android:textColor="#C5C5C5" />
-
-            <View
-                android:id="@+id/rightLine"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_centerVertical="true"
-                android:layout_toRightOf="@+id/text1"
-                android:background="#C5C5C5" />
-
-        </RelativeLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/_3sdp"
-                android:text="Belum punya akun?" />
-
-            <TextView
-                android:id="@+id/btn_signup"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:text=" Daftar disini"
-                android:textColor="@color/colorPrimaryVariant" />
-        </LinearLayout>
-
     </LinearLayout>
 
     <ProgressBar
-        android:id="@+id/pbLogin"
+        android:id="@+id/pbReg"
         android:visibility="gone"
         android:layout_width="@dimen/_45sdp"
         android:layout_height="@dimen/_45sdp"
