@@ -62,4 +62,10 @@ dependencies {
 
     //circularimageview
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+    //picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
+    //autofittextview
+    implementation 'me.grantland:autofittextview:0.2.+'
 }

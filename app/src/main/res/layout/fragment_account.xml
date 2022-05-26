@@ -101,7 +101,7 @@
                             android:layout_marginStart="10dp"
                             android:layout_marginEnd="5dp"
                             android:src="@drawable/ic_baseline_person_outline_24"
-                            app:tint="#ff7f60" />
+                            app:tint="#00C2CB" />
 
                         <TextView
                             android:id="@+id/text1"
@@ -161,7 +161,7 @@
                             android:layout_marginStart="10dp"
                             android:layout_marginEnd="5dp"
                             android:src="@drawable/ic_baseline_card_membership_24"
-                            app:tint="#57d58a" />
+                            app:tint="#00C2CB" />
 
                         <TextView
                             android:id="@+id/text2"
@@ -222,7 +222,7 @@
                             android:layout_marginStart="10dp"
                             android:layout_marginEnd="5dp"
                             android:src="@drawable/ic_baseline_confirmation_number_24"
-                            app:tint="#9f73f1" />
+                            app:tint="#00C2CB" />
 
                         <TextView
                             android:id="@+id/text3"
@@ -283,7 +283,7 @@
                             android:layout_marginStart="10dp"
                             android:layout_marginEnd="5dp"
                             android:src="@drawable/ic_baseline_account_balance_wallet_24"
-                            app:tint="#4E4E4E" />
+                            app:tint="#00C2CB" />
 
                         <TextView
                             android:id="@+id/text4"
@@ -308,8 +308,8 @@
                             android:layout_gravity="end"
                             android:layout_marginBottom="@dimen/_10sdp"
                             android:drawableRight="@drawable/ic_baseline_arrow_forward_24"
-                            android:drawableTint="#005bcb"
 
+                            android:drawableTint="#005bcb"
                             android:text="lihat"
                             android:textColor="#005bcb"
                             android:textSize="@dimen/_12ssp" />
@@ -340,7 +340,7 @@
                         android:layout_marginStart="10dp"
                         android:layout_marginEnd="5dp"
                         android:src="@drawable/ic_baseline_list_alt_24"
-                        app:tint="#eeb8e8" />
+                        app:tint="#00C2CB" />
 
                     <TextView
                         android:id="@+id/text5"
@@ -393,7 +393,7 @@
                         android:layout_marginStart="10dp"
                         android:layout_marginEnd="5dp"
                         android:src="@drawable/ic_baseline_home_24"
-                        app:tint="#EEE1B8" />
+                        app:tint="#00C2CB" />
 
                     <TextView
                         android:id="@+id/text6"
@@ -446,7 +446,7 @@
                         android:layout_marginStart="10dp"
                         android:layout_marginEnd="5dp"
                         android:src="@drawable/ic_baseline_remove_red_eye_24"
-                        app:tint="#EEB8B8" />
+                        app:tint="#00C2CB" />
 
                     <TextView
                         android:id="@+id/text7"

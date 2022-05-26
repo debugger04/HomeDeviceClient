@@ -8,10 +8,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import com.example.homedeviceclient.LoginActivity
-import com.example.homedeviceclient.R
+import android.widget.Toast
+import com.example.homedeviceclient.*
+import com.example.homedeviceclient.app.ApiConfig
+import com.example.homedeviceclient.helper.ResponseModel
 import com.example.homedeviceclient.helper.SharedPrefs
+import com.example.homedeviceclient.model.Alamat
+import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.fragment_account.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -29,6 +36,10 @@ class AccountFragment : Fragment() {
     private var param2: String? = null
 
     lateinit var btnLogout:Button
+    lateinit var btnGantiPass:Button
+    lateinit var btnDetailProf:Button
+    lateinit var btnDetailAlamat:Button
+    lateinit var btnDetailWall:Button
     lateinit var txtNama:TextView
     lateinit var txtEmail:TextView
     lateinit var sp:SharedPrefs
@@ -48,6 +59,10 @@ class AccountFragment : Fragment() {
         val view : View = inflater.inflate(R.layout.fragment_account, container, false)
         // Inflate the layout for this fragment
         btnLogout = view.findViewById(R.id.btn_logout)
+        btnGantiPass = view.findViewById(R.id.btnGantiPassword)
+        btnDetailProf = view.findViewById(R.id.btnDetailProfil)
+        btnDetailAlamat = view.findViewById(R.id.btnDetailAlamat)
+        btnDetailWall = view.findViewById(R.id.btnDetailWallet)
         txtNama = view.findViewById(R.id.txtNama)
         txtEmail = view.findViewById(R.id.txtEmail)
         sp = SharedPrefs(requireActivity())
@@ -55,6 +70,31 @@ class AccountFragment : Fragment() {
         btnLogout.setOnClickListener {
             sp.setLogin(false)
             val intent = Intent(requireActivity(), LoginActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+        }
+
+        btnGantiPass.setOnClickListener {
+            val intent = Intent(requireActivity(), GantiPasswordActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+        }
+
+        btnDetailProf.setOnClickListener {
+            val intent = Intent(requireActivity(), DetailUserActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+        }
+
+        btnDetailAlamat.setOnClickListener {
+            val intent = Intent(requireActivity(), AlamatActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+        }
+
+        btnDetailWall.setOnClickListener {
+            val intent = Intent(requireActivity(), WalletActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
         }
 
