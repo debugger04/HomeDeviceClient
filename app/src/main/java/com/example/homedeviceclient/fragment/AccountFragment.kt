@@ -8,17 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 import com.example.homedeviceclient.*
-import com.example.homedeviceclient.app.ApiConfig
-import com.example.homedeviceclient.helper.ResponseModel
 import com.example.homedeviceclient.helper.SharedPrefs
-import com.example.homedeviceclient.model.Alamat
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.fragment_account.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

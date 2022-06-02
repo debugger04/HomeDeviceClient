@@ -1,9 +1,6 @@
 package com.example.homedeviceclient.helper
 
-import com.example.homedeviceclient.model.Alamat
-import com.example.homedeviceclient.model.LogWallet
-import com.example.homedeviceclient.model.User
-import com.example.homedeviceclient.model.Wallet
+import com.example.homedeviceclient.model.*
 
 class ResponseModel {
     var code = 0
@@ -13,4 +10,6 @@ class ResponseModel {
     var alamat = Alamat()
     var wallet = Wallet()
     var logwallets:ArrayList<LogWallet> = ArrayList()
+    var walletreqs:ArrayList<WalletRequest> = ArrayList()
+    var walletreq = WalletRequest()
 }

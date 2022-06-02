@@ -156,7 +156,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:layout_toRightOf="@id/iconOngoing"
-                android:text="Transaksi Berjalan"
+                android:text="Saldo dalam proses"
                 android:textColor="#4E4E4E"
                 android:textSize="@dimen/_12ssp" />
 

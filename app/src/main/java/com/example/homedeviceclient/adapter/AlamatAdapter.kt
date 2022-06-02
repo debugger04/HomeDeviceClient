@@ -12,12 +12,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.homedeviceclient.DetailAlamatActivity
 import com.example.homedeviceclient.R
 import com.example.homedeviceclient.model.Alamat
-import kotlinx.android.synthetic.main.alamat_card_layout.view.*
 
 class AlamatAdapter(val alamats: ArrayList<Alamat>): RecyclerView.Adapter<AlamatAdapter.AlamatViewHolder>() {
     class AlamatViewHolder(val v: View): RecyclerView.ViewHolder(v) {
         val txtNama:TextView = v.findViewById(R.id.txtNama)
-        val txtTelepon:TextView = v.findViewById(R.id.txtTelepon)
+        val txtTelepon:TextView = v.findViewById(R.id.txtTanggals)
         val txtAlamat:TextView = v.findViewById(R.id.txtAlamat)
         val btnUbah: Button = v.findViewById(R.id.btnUbahAlamat)
         val btnDelete: TextView = v.findViewById(R.id.btnDelete)
@@ -42,9 +41,9 @@ class AlamatAdapter(val alamats: ArrayList<Alamat>): RecyclerView.Adapter<Alamat
             builder.setCancelable(true)
             builder.setTitle("Hapus Alamat")
             builder.setMessage("Yakin untuk menghapus alamat ?")
-            builder.setPositiveButton("Hapus !",
+            builder.setPositiveButton("Hapus",
                 DialogInterface.OnClickListener { dialog, which -> })
-            builder.setNegativeButton(android.R.string.cancel,
+            builder.setNegativeButton("Batal",
                 DialogInterface.OnClickListener { dialog, which -> })
 
             val dialog: AlertDialog = builder.create()

@@ -1,11 +1,11 @@
 package com.example.homedeviceclient.app
 
 import com.example.homedeviceclient.helper.ResponseModel
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import okhttp3.ResponseBody
 import retrofit2.Call
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.POST
+import retrofit2.http.*
 import java.util.*
 
 interface ApiService {
@@ -95,5 +95,25 @@ interface ApiService {
     @POST("user/wallet_history")
     fun getLogWallet(
         @Field("email") email :String
+    ): Call<ResponseModel>
+
+    @Multipart
+    @POST("user/tambah_saldo_wallet")
+    fun tambahSaldo(
+        @Part("email") email :RequestBody,
+        @Part("jumlah") jumlah : RequestBody,
+        @Part bukti_transfer :MultipartBody.Part,
+    ): Call<ResponseModel>
+
+    @FormUrlEncoded
+    @POST("user/wallet_ongoing")
+    fun getWalletOngoing(
+        @Field("email") email :String
+    ): Call<ResponseModel>
+
+    @FormUrlEncoded
+    @POST("user/wallet_ongoing_detail")
+    fun getWalletOngoingDetail(
+        @Field("id") id :String
     ): Call<ResponseModel>
 }
