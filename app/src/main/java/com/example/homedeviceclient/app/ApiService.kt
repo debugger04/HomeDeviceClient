@@ -86,6 +86,12 @@ interface ApiService {
     ): Call<ResponseModel>
 
     @FormUrlEncoded
+    @POST("user/delete_alamat")
+    fun hapusAlamat(
+        @Field("id") id :String
+    ): Call<ResponseModel>
+
+    @FormUrlEncoded
     @POST("user/wallet")
     fun getWallet(
         @Field("email") email :String
@@ -114,6 +120,18 @@ interface ApiService {
     @FormUrlEncoded
     @POST("user/wallet_ongoing_detail")
     fun getWalletOngoingDetail(
+        @Field("id") id :String
+    ): Call<ResponseModel>
+
+    @FormUrlEncoded
+    @POST("user/transaksi")
+    fun getTransaksi(
+        @Field("email") email :String
+    ): Call<ResponseModel>
+
+    @FormUrlEncoded
+    @POST("user/transaksi_detail")
+    fun getTransaksiDetail(
         @Field("id") id :String
     ): Call<ResponseModel>
 }

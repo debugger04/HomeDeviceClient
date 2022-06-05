@@ -12,4 +12,8 @@ class ResponseModel {
     var logwallets:ArrayList<LogWallet> = ArrayList()
     var walletreqs:ArrayList<WalletRequest> = ArrayList()
     var walletreq = WalletRequest()
+    var transaksis:ArrayList<Transaksi> = ArrayList()
+    var transaksi = Transaksi()
+    var tdtotal = 0
+    var detailtransaksi:ArrayList<TransaksiDetail> = ArrayList()
 }

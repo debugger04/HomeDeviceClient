@@ -10,7 +10,6 @@ import androidx.appcompat.app.ActionBar
 import com.example.homedeviceclient.app.ApiConfig
 import com.example.homedeviceclient.helper.ResponseModel
 import com.example.homedeviceclient.helper.SharedPrefs
-import kotlinx.android.synthetic.main.activity_add_alamat.*
 import kotlinx.android.synthetic.main.activity_detail_alamat.*
 import kotlinx.android.synthetic.main.activity_detail_alamat.txtJalan
 import kotlinx.android.synthetic.main.activity_detail_alamat.txtKabKota
@@ -21,7 +20,6 @@ import kotlinx.android.synthetic.main.activity_detail_alamat.txtProvinsi
 import kotlinx.android.synthetic.main.activity_detail_alamat.txtRt
 import kotlinx.android.synthetic.main.activity_detail_alamat.txtRw
 import kotlinx.android.synthetic.main.activity_detail_alamat.txtTag
-import kotlinx.android.synthetic.main.activity_detail_user.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

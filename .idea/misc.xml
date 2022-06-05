@@ -16,6 +16,8 @@
         <entry key="..\:/HomeDeviceClient/app/src/main/res/layout/activity_ongoing_saldo.xml" value="0.371875" />
         <entry key="..\:/HomeDeviceClient/app/src/main/res/layout/activity_register.xml" value="0.371875" />
         <entry key="..\:/HomeDeviceClient/app/src/main/res/layout/activity_tambah_saldo.xml" value="0.371875" />
+        <entry key="..\:/HomeDeviceClient/app/src/main/res/layout/activity_transaksi.xml" value="0.371875" />
+        <entry key="..\:/HomeDeviceClient/app/src/main/res/layout/activity_transaksi_detail.xml" value="0.371875" />
         <entry key="..\:/HomeDeviceClient/app/src/main/res/layout/activity_wallet.xml" value="0.33" />
         <entry key="..\:/HomeDeviceClient/app/src/main/res/layout/alamat_card_layout.xml" value="0.371875" />
         <entry key="..\:/HomeDeviceClient/app/src/main/res/layout/fragment_account.xml" value="0.371875" />
@@ -24,6 +26,8 @@
         <entry key="..\:/HomeDeviceClient/app/src/main/res/layout/fragment_home.xml" value="0.371875" />
         <entry key="..\:/HomeDeviceClient/app/src/main/res/layout/log_wallet_card_layout.xml" value="0.67" />
         <entry key="..\:/HomeDeviceClient/app/src/main/res/layout/ongoing_saldo_card_layout.xml" value="0.371875" />
+        <entry key="..\:/HomeDeviceClient/app/src/main/res/layout/transaksi_card_layout.xml" value="0.371875" />
+        <entry key="..\:/HomeDeviceClient/app/src/main/res/layout/transaksi_detail_card_layout.xml" value="0.371875" />
         <entry key="..\:/HomeDeviceClient/app/src/main/res/menu/menu_alamat.xml" value="0.371875" />
         <entry key="..\:/HomeDeviceClient/app/src/main/res/menu/menu_bottom_nav.xml" value="0.371875" />
         <entry key="..\:/HomeDeviceClient/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.359" />
