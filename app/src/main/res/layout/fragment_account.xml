@@ -247,8 +247,8 @@
                             android:layout_gravity="end"
                             android:layout_marginBottom="@dimen/_10sdp"
                             android:drawableRight="@drawable/ic_baseline_arrow_forward_24"
-                            android:drawableTint="#005bcb"
 
+                            android:drawableTint="#005bcb"
                             android:text="lihat"
                             android:textColor="#005bcb"
                             android:textSize="@dimen/_12ssp" />

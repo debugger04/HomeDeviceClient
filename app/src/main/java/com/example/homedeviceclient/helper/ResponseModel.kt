@@ -16,4 +16,6 @@ class ResponseModel {
     var transaksi = Transaksi()
     var tdtotal = 0
     var detailtransaksi:ArrayList<TransaksiDetail> = ArrayList()
+    var kodepromo:ArrayList<KodePromo> = ArrayList()
+    var kode = KodePromo()
 }

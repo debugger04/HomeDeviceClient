@@ -15,9 +15,16 @@
         android:theme="@style/Theme.HomeDeviceClient"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".SearchKodePromoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DetailKodePromoActivity"
+            android:exported="false"
+            android:label="Detail Kode Promo" />
+        <activity
             android:name=".KodePromoActivity"
             android:exported="false"
-            android:label="Kode Promo"/>
+            android:label="Kode Promo" />
         <activity
             android:name=".TransaksiDetailActivity"
             android:exported="false"

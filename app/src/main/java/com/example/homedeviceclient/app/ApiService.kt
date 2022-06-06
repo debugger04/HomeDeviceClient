@@ -1,5 +1,6 @@
 package com.example.homedeviceclient.app
 
+import android.text.Editable
 import com.example.homedeviceclient.helper.ResponseModel
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -132,6 +133,31 @@ interface ApiService {
     @FormUrlEncoded
     @POST("user/transaksi_detail")
     fun getTransaksiDetail(
+        @Field("id") id :String
+    ): Call<ResponseModel>
+
+    @FormUrlEncoded
+    @POST("user/kode_promo")
+    fun getKodePromo(
+        @Field("email") email :String
+    ): Call<ResponseModel>
+
+    @FormUrlEncoded
+    @POST("user/detail_kode_promo")
+    fun getKodeDetail(
+        @Field("id") id :String
+    ): Call<ResponseModel>
+
+    @FormUrlEncoded
+    @POST("user/kode_promo_search")
+    fun findKodePromo(
+        @Field("kode") kode:String
+    ): Call<ResponseModel>
+
+    @FormUrlEncoded
+    @POST("user/klaim_kode_promo")
+    fun claimKodePromo(
+        @Field("email") email :String,
         @Field("id") id :String
     ): Call<ResponseModel>
 }
