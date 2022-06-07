@@ -35,6 +35,7 @@ class AccountFragment : Fragment() {
     lateinit var btnDetailWall:Button
     lateinit var btnTransaksi:Button
     lateinit var btnKode:Button
+    lateinit var btnMember:Button
     lateinit var txtNama:TextView
     lateinit var txtEmail:TextView
     lateinit var sp:SharedPrefs
@@ -60,6 +61,7 @@ class AccountFragment : Fragment() {
         btnDetailWall = view.findViewById(R.id.btnDetailWallet)
         btnTransaksi = view.findViewById(R.id.btnTransaksi)
         btnKode = view.findViewById(R.id.btnDetailCode)
+        btnMember = view.findViewById(R.id.btnDetailMember)
         txtNama = view.findViewById(R.id.txtNama)
         txtEmail = view.findViewById(R.id.txtEmail)
         sp = SharedPrefs(requireActivity())
@@ -103,6 +105,12 @@ class AccountFragment : Fragment() {
 
         btnKode.setOnClickListener {
             val intent = Intent(requireActivity(), KodePromoActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+        }
+
+        btnMember.setOnClickListener {
+            val intent = Intent(requireActivity(), MembershipActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
         }

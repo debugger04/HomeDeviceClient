@@ -18,4 +18,9 @@ class ResponseModel {
     var detailtransaksi:ArrayList<TransaksiDetail> = ArrayList()
     var kodepromo:ArrayList<KodePromo> = ArrayList()
     var kode = KodePromo()
+    var member = Membership()
+    var nextmember = Membership()
+    var membersettings = MembershipSettings()
+    var memberships:ArrayList<Membership> = ArrayList()
+    var member_id = 0
 }

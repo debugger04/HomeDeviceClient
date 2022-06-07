@@ -21,7 +21,6 @@ import retrofit2.Response
 
 class LogWalletActivity : AppCompatActivity() {
     var listLogWallet: ArrayList<LogWallet> = ArrayList()
-
     lateinit var sp: SharedPrefs
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

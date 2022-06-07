@@ -160,4 +160,16 @@ interface ApiService {
         @Field("email") email :String,
         @Field("id") id :String
     ): Call<ResponseModel>
+
+    @FormUrlEncoded
+    @POST("user/member")
+    fun userMember(
+        @Field("email") email :String
+    ): Call<ResponseModel>
+
+    @FormUrlEncoded
+    @POST("user/memberships")
+    fun getMembership(
+        @Field("email") email :String
+    ): Call<ResponseModel>
 }
