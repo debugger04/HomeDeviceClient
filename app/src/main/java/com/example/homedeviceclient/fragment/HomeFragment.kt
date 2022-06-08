@@ -5,7 +5,22 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.homedeviceclient.R
+import com.example.homedeviceclient.adapter.CategoryAdapter
+import com.example.homedeviceclient.adapter.MerkAdapter
+import com.example.homedeviceclient.adapter.ProductAdapter
+import com.example.homedeviceclient.adapter.ProductDiscountAdapter
+import com.example.homedeviceclient.app.ApiConfig
+import com.example.homedeviceclient.helper.ResponseModel
+import com.example.homedeviceclient.model.Category
+import com.example.homedeviceclient.model.Merk
+import com.example.homedeviceclient.model.Product
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -18,43 +33,80 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class HomeFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    var listMerk:ArrayList<Merk> = ArrayList()
+    var listProdDisc:ArrayList<Product> = ArrayList()
+    var listProduct:ArrayList<Product> = ArrayList()
+    var listTukarTambah:ArrayList<Product> = ArrayList()
+    var v:View ?= null
+    lateinit var merkView: RecyclerView
+    lateinit var prodDiscView: RecyclerView
+    lateinit var prodView: RecyclerView
+    lateinit var tukarView: RecyclerView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        val view: View = inflater.inflate(R.layout.fragment_home, container, false)
+        init(view)
+        getBrand()
+
+        return view
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment HomeFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            HomeFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    private fun getBrand() {
+        ApiConfig.instanceRetrofit.getBrand().enqueue(object :
+            Callback<ResponseModel> {
+            override fun onResponse(call: Call<ResponseModel>, response: Response<ResponseModel>) {
+                val response = response.body()!!
+                if(response.code == 200) {
+                    listMerk = response.brands
+                    listProdDisc = response.discProducts
+                    listProduct = response.nonDiscProducts
+                    listTukarTambah = response.tukarTambahProducts
+                    updateSlider()
+                } else {
+                    Toast.makeText(activity, "Kesalahan : "+response.msg, Toast.LENGTH_SHORT).show()
                 }
             }
+
+            override fun onFailure(call: Call<ResponseModel>, t: Throwable) {
+                Toast.makeText(activity, "Kesalahan : "+t.message, Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    fun updateSlider() {
+        val layout = LinearLayoutManager(activity)
+        layout.orientation = LinearLayoutManager.HORIZONTAL
+        merkView.layoutManager = layout
+        merkView.setHasFixedSize(true)
+        merkView.adapter = MerkAdapter(listMerk)
+
+        val layout1 = LinearLayoutManager(activity)
+        layout1.orientation = LinearLayoutManager.HORIZONTAL
+        prodDiscView.layoutManager = layout1
+        prodDiscView.setHasFixedSize(true)
+        prodDiscView.adapter = ProductDiscountAdapter(listProdDisc)
+
+        val layout2 = LinearLayoutManager(activity)
+        layout2.orientation = LinearLayoutManager.HORIZONTAL
+        prodView.layoutManager = layout2
+        prodView.setHasFixedSize(true)
+        prodView.adapter = ProductAdapter(listProduct)
+
+        val layout3 = LinearLayoutManager(activity)
+        layout3.orientation = LinearLayoutManager.HORIZONTAL
+        tukarView.layoutManager = layout3
+        tukarView.setHasFixedSize(true)
+        tukarView.adapter = ProductAdapter(listTukarTambah)
+    }
+
+    fun init(view: View) {
+        merkView = view.findViewById(R.id.merkView)
+        prodDiscView = view.findViewById(R.id.prodDiscView)
+        prodView = view.findViewById(R.id.prodView)
+        tukarView = view.findViewById(R.id.tukarTambahView)
     }
 }

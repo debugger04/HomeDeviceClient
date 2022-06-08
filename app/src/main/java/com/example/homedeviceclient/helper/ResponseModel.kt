@@ -24,4 +24,8 @@ class ResponseModel {
     var memberships:ArrayList<Membership> = ArrayList()
     var member_id = 0
     var kategoris:ArrayList<Category> = ArrayList()
+    var brands:ArrayList<Merk> = ArrayList()
+    var discProducts:ArrayList<Product> = ArrayList()
+    var nonDiscProducts:ArrayList<Product> = ArrayList()
+    var tukarTambahProducts:ArrayList<Product> = ArrayList()
 }

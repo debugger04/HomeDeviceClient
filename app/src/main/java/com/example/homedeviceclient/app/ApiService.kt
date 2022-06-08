@@ -175,4 +175,7 @@ interface ApiService {
 
     @GET("kategori")
     fun getCategory(): Call<ResponseModel>
+
+    @GET("home")
+    fun getBrand(): Call<ResponseModel>
 }

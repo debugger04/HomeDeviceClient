@@ -73,6 +73,5 @@ class CategoryFragment : Fragment() {
         cgView.layoutManager = layout
         cgView.setHasFixedSize(true)
         cgView.adapter = CategoryAdapter(listCategory)
-        Log.d("Masuk", "berhasil")
     }
 }

@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/HomeDeviceClient/app/src/main/res/drawable/radius.xml" value="0.359" />
         <entry key="..\:/HomeDeviceClient/app/src/main/res/layout/activity_add_alamat.xml" value="0.371875" />
         <entry key="..\:/HomeDeviceClient/app/src/main/res/layout/activity_alamat.xml" value="0.371875" />
         <entry key="..\:/HomeDeviceClient/app/src/main/res/layout/activity_detail_alamat.xml" value="0.371875" />
@@ -29,12 +30,15 @@
         <entry key="..\:/HomeDeviceClient/app/src/main/res/layout/fragment_account.xml" value="0.371875" />
         <entry key="..\:/HomeDeviceClient/app/src/main/res/layout/fragment_cart.xml" value="0.371875" />
         <entry key="..\:/HomeDeviceClient/app/src/main/res/layout/fragment_category.xml" value="0.371875" />
-        <entry key="..\:/HomeDeviceClient/app/src/main/res/layout/fragment_home.xml" value="0.371875" />
+        <entry key="..\:/HomeDeviceClient/app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="..\:/HomeDeviceClient/app/src/main/res/layout/kode_dimiliki_card_layout.xml" value="0.371875" />
         <entry key="..\:/HomeDeviceClient/app/src/main/res/layout/kode_search_card_layout.xml" value="0.371875" />
         <entry key="..\:/HomeDeviceClient/app/src/main/res/layout/log_wallet_card_layout.xml" value="0.67" />
         <entry key="..\:/HomeDeviceClient/app/src/main/res/layout/membership_card_layout.xml" value="0.371875" />
+        <entry key="..\:/HomeDeviceClient/app/src/main/res/layout/merk_card_layout.xml" value="0.5" />
         <entry key="..\:/HomeDeviceClient/app/src/main/res/layout/ongoing_saldo_card_layout.xml" value="0.371875" />
+        <entry key="..\:/HomeDeviceClient/app/src/main/res/layout/product_discount_home_layout.xml" value="0.67" />
+        <entry key="..\:/HomeDeviceClient/app/src/main/res/layout/product_home_card_layout.xml" value="0.5" />
         <entry key="..\:/HomeDeviceClient/app/src/main/res/layout/transaksi_card_layout.xml" value="0.371875" />
         <entry key="..\:/HomeDeviceClient/app/src/main/res/layout/transaksi_detail_card_layout.xml" value="0.371875" />
         <entry key="..\:/HomeDeviceClient/app/src/main/res/menu/menu_alamat.xml" value="0.371875" />
