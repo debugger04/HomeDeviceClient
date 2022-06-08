@@ -172,4 +172,7 @@ interface ApiService {
     fun getMembership(
         @Field("email") email :String
     ): Call<ResponseModel>
+
+    @GET("kategori")
+    fun getCategory(): Call<ResponseModel>
 }

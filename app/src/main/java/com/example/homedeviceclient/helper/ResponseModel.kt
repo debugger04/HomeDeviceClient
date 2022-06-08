@@ -23,4 +23,5 @@ class ResponseModel {
     var membersettings = MembershipSettings()
     var memberships:ArrayList<Membership> = ArrayList()
     var member_id = 0
+    var kategoris:ArrayList<Category> = ArrayList()
 }
