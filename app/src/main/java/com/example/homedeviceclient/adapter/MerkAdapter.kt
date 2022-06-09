@@ -1,11 +1,14 @@
 package com.example.homedeviceclient.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.homedeviceclient.DetailCategoryActivity
+import com.example.homedeviceclient.DetailMerkActivity
 import com.example.homedeviceclient.R
 import com.example.homedeviceclient.model.Merk
 import com.squareup.picasso.Picasso
@@ -25,6 +28,12 @@ class MerkAdapter(val merks: ArrayList<Merk>): RecyclerView.Adapter<MerkAdapter.
         val merk = merks[position]
         holder.btnMerk.text = merk.nama
         Picasso.get().load(uri+merk.gambar).into(holder.imgMerk)
+        holder.btnMerk.setOnClickListener {
+            val intent = Intent(holder.v.context, DetailMerkActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+            intent.putExtra("M_ID", merk.id.toString())
+            holder.v.context.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int {

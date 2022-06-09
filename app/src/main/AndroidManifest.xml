@@ -15,9 +15,32 @@
         android:theme="@style/Theme.HomeDeviceClient"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".AllProductActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AllMerkActivity"
+            android:exported="false"
+            android:label="Merk" />
+        <activity
+            android:name=".SearchActivity"
+            android:exported="false"
+            android:label="Cari Produk" />
+        <activity
+            android:name=".DetailMerkActivity"
+            android:exported="false"
+            android:label="Merk" />
+        <activity
+            android:name=".DetailCategoryActivity"
+            android:exported="false"
+            android:label="Kategori" />
+        <activity
+            android:name=".DetailProductActivity"
+            android:exported="false"
+            android:label="Detail Produk" />
+        <activity
             android:name=".DetailMembershipActivity"
             android:exported="false"
-            android:label="Membership"/>
+            android:label="Membership" />
         <activity
             android:name=".MembershipActivity"
             android:exported="false"

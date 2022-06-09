@@ -28,4 +28,6 @@ class ResponseModel {
     var discProducts:ArrayList<Product> = ArrayList()
     var nonDiscProducts:ArrayList<Product> = ArrayList()
     var tukarTambahProducts:ArrayList<Product> = ArrayList()
+    var products:ArrayList<Product> = ArrayList()
+    var flagships:ArrayList<ProductLama> = ArrayList()
 }

@@ -178,4 +178,28 @@ interface ApiService {
 
     @GET("home")
     fun getBrand(): Call<ResponseModel>
+
+    @FormUrlEncoded
+    @POST("kategori/products")
+    fun ktgProducts(
+        @Field("id") id :String
+    ): Call<ResponseModel>
+
+    @FormUrlEncoded
+    @POST("brand/products")
+    fun brandProducts(
+        @Field("id") id :String
+    ): Call<ResponseModel>
+
+    @GET("brand")
+    fun getAllBrand(): Call<ResponseModel>
+
+    @FormUrlEncoded
+    @POST("product/search")
+    fun searchProducts(
+        @Field("nama") nama:String
+    ): Call<ResponseModel>
+
+    @GET("product")
+    fun getAllProduct(): Call<ResponseModel>
 }
