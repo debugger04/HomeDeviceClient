@@ -202,4 +202,45 @@ interface ApiService {
 
     @GET("product")
     fun getAllProduct(): Call<ResponseModel>
+
+    @FormUrlEncoded
+    @POST("kategori/search_product")
+    fun searchProductKtg(
+        @Field("nama") nama:String,
+        @Field("id") id:String
+    ): Call<ResponseModel>
+
+    @FormUrlEncoded
+    @POST("brand/search_product")
+    fun searchProductBrd(
+        @Field("nama") nama:String,
+        @Field("id") id:String
+    ): Call<ResponseModel>
+
+    @GET("flagship")
+    fun getAllFlagship(): Call<ResponseModel>
+
+    @FormUrlEncoded
+    @POST("flagship/search_product")
+    fun searchProductFlg(
+        @Field("nama") nama:String
+    ): Call<ResponseModel>
+
+    @GET("tukar_tambah")
+    fun getAllTukarTambah(): Call<ResponseModel>
+
+    @GET("product/discount")
+    fun getAllDisc(): Call<ResponseModel>
+
+    @FormUrlEncoded
+    @POST("product/discount_search")
+    fun searchProductDc(
+        @Field("nama") nama:String
+    ): Call<ResponseModel>
+
+    @FormUrlEncoded
+    @POST("tukar_tambah/search_product")
+    fun searchProductTt(
+        @Field("nama") nama:String
+    ): Call<ResponseModel>
 }

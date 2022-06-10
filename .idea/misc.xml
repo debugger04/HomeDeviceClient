@@ -7,8 +7,11 @@
         <entry key="..\:/HomeDeviceClient/app/src/main/res/font/tes.xml" value="0.40208333333333335" />
         <entry key="..\:/HomeDeviceClient/app/src/main/res/layout/activity_add_alamat.xml" value="0.371875" />
         <entry key="..\:/HomeDeviceClient/app/src/main/res/layout/activity_alamat.xml" value="0.371875" />
+        <entry key="..\:/HomeDeviceClient/app/src/main/res/layout/activity_all_discount.xml" value="0.371875" />
+        <entry key="..\:/HomeDeviceClient/app/src/main/res/layout/activity_all_flagship.xml" value="0.371875" />
         <entry key="..\:/HomeDeviceClient/app/src/main/res/layout/activity_all_merk.xml" value="0.371875" />
         <entry key="..\:/HomeDeviceClient/app/src/main/res/layout/activity_all_product.xml" value="0.371875" />
+        <entry key="..\:/HomeDeviceClient/app/src/main/res/layout/activity_all_tukar_tambah.xml" value="0.371875" />
         <entry key="..\:/HomeDeviceClient/app/src/main/res/layout/activity_detail_alamat.xml" value="0.371875" />
         <entry key="..\:/HomeDeviceClient/app/src/main/res/layout/activity_detail_category.xml" value="0.371875" />
         <entry key="..\:/HomeDeviceClient/app/src/main/res/layout/activity_detail_kode_promo.xml" value="0.371875" />
@@ -27,7 +30,12 @@
         <entry key="..\:/HomeDeviceClient/app/src/main/res/layout/activity_ongoing_saldo.xml" value="0.371875" />
         <entry key="..\:/HomeDeviceClient/app/src/main/res/layout/activity_register.xml" value="0.371875" />
         <entry key="..\:/HomeDeviceClient/app/src/main/res/layout/activity_search.xml" value="0.371875" />
+        <entry key="..\:/HomeDeviceClient/app/src/main/res/layout/activity_search_discount.xml" value="0.371875" />
+        <entry key="..\:/HomeDeviceClient/app/src/main/res/layout/activity_search_flagship.xml" value="0.371875" />
+        <entry key="..\:/HomeDeviceClient/app/src/main/res/layout/activity_search_kategori.xml" value="0.371875" />
         <entry key="..\:/HomeDeviceClient/app/src/main/res/layout/activity_search_kode_promo.xml" value="0.371875" />
+        <entry key="..\:/HomeDeviceClient/app/src/main/res/layout/activity_search_merk.xml" value="0.371875" />
+        <entry key="..\:/HomeDeviceClient/app/src/main/res/layout/activity_search_tukar_tambah.xml" value="0.371875" />
         <entry key="..\:/HomeDeviceClient/app/src/main/res/layout/activity_tambah_saldo.xml" value="0.371875" />
         <entry key="..\:/HomeDeviceClient/app/src/main/res/layout/activity_transaksi.xml" value="0.371875" />
         <entry key="..\:/HomeDeviceClient/app/src/main/res/layout/activity_transaksi_detail.xml" value="0.371875" />
@@ -45,6 +53,7 @@
         <entry key="..\:/HomeDeviceClient/app/src/main/res/layout/merk_card_layout.xml" value="0.5" />
         <entry key="..\:/HomeDeviceClient/app/src/main/res/layout/ongoing_saldo_card_layout.xml" value="0.371875" />
         <entry key="..\:/HomeDeviceClient/app/src/main/res/layout/product_discount_home_layout.xml" value="0.67" />
+        <entry key="..\:/HomeDeviceClient/app/src/main/res/layout/product_discount_search_card_layout.xml" value="0.75" />
         <entry key="..\:/HomeDeviceClient/app/src/main/res/layout/product_home_card_layout.xml" value="0.5" />
         <entry key="..\:/HomeDeviceClient/app/src/main/res/layout/product_search_card_layout.xml" value="0.371875" />
         <entry key="..\:/HomeDeviceClient/app/src/main/res/layout/transaksi_card_layout.xml" value="0.371875" />

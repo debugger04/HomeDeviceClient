@@ -1,5 +1,6 @@
 package com.example.homedeviceclient
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -31,6 +32,13 @@ class DetailCategoryActivity : AppCompatActivity() {
         actionBar.setDisplayHomeAsUpEnabled(true)
 
         categoryProducts()
+
+        btn_dg_search.setOnClickListener {
+            val intent = Intent(this, SearchKategoriActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+            intent.putExtra("C1_ID", id)
+            startActivity(intent)
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

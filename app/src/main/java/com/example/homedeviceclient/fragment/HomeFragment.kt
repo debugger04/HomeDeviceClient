@@ -76,6 +76,24 @@ class HomeFragment : Fragment() {
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
         }
+
+        btnLihatTukar.setOnClickListener {
+            val intent = Intent(requireActivity(), AllTukarTambahActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+        }
+
+        btnLihatProdDisc.setOnClickListener {
+            val intent = Intent(requireActivity(), AllDiscountActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+        }
+
+        btnLihatFlagship.setOnClickListener {
+            val intent = Intent(requireActivity(), AllFlagshipActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+        }
     }
 
     private fun getBrand() {

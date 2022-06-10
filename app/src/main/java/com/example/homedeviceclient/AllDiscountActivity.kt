@@ -8,23 +8,21 @@ import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.homedeviceclient.adapter.ProductAdapter
+import com.example.homedeviceclient.adapter.ProductDiscountAdapter
 import com.example.homedeviceclient.app.ApiConfig
 import com.example.homedeviceclient.helper.ResponseModel
 import com.example.homedeviceclient.model.Product
-import kotlinx.android.synthetic.main.activity_detail_category.*
-import kotlinx.android.synthetic.main.activity_detail_merk.*
+import kotlinx.android.synthetic.main.activity_all_discount.*
+import kotlinx.android.synthetic.main.activity_all_product.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class DetailMerkActivity : AppCompatActivity() {
-    var listProducts:ArrayList<Product> = ArrayList()
-    var id = ""
+class AllDiscountActivity : AppCompatActivity() {
+    var listProduct:ArrayList<Product> = ArrayList()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_detail_merk)
-
-        id = intent.getStringExtra("M_ID").toString()
+        setContentView(R.layout.activity_all_discount)
 
         // calling the action bar
         val actionBar: ActionBar = supportActionBar!!
@@ -32,12 +30,11 @@ class DetailMerkActivity : AppCompatActivity() {
         // showing the back button in action bar
         actionBar.setDisplayHomeAsUpEnabled(true)
 
-        brandProduct()
+        getAllProduk()
 
-        btn_dm_search.setOnClickListener {
-            val intent = Intent(this, SearchMerkActivity::class.java)
+        btnSearch7.setOnClickListener {
+            val intent = Intent(this, SearchDiscountActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
-            intent.putExtra("M1_ID", id)
             startActivity(intent)
         }
     }
@@ -52,29 +49,29 @@ class DetailMerkActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    private fun brandProduct() {
-        ApiConfig.instanceRetrofit.brandProducts(id).enqueue(object :
+    private fun getAllProduk() {
+        ApiConfig.instanceRetrofit.getAllDisc().enqueue(object :
             Callback<ResponseModel> {
             override fun onResponse(call: Call<ResponseModel>, response: Response<ResponseModel>) {
                 val response = response.body()!!
                 if(response.code == 200) {
-                    listProducts = response.products
+                    listProduct = response.products
                     updateList()
                 } else {
-                    Toast.makeText(this@DetailMerkActivity, "Kesalahan : "+response.msg, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@AllDiscountActivity, "Kesalahan : "+response.msg, Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<ResponseModel>, t: Throwable) {
-                Toast.makeText(this@DetailMerkActivity, "Kesalahan : "+t.message, Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@AllDiscountActivity, "Kesalahan : "+t.message, Toast.LENGTH_SHORT).show()
             }
         })
     }
 
     fun updateList() {
         val sg = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-        merkItemView.layoutManager = sg
-        merkItemView.setHasFixedSize(true)
-        merkItemView.adapter = ProductAdapter(listProducts)
+        allDiscView.layoutManager = sg
+        allDiscView.setHasFixedSize(true)
+        allDiscView.adapter = ProductDiscountAdapter(listProduct)
     }
 }
