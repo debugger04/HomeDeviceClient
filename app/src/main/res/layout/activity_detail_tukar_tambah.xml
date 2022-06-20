@@ -78,34 +78,6 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/txtBarTtDetail" />
-
-                    <TextView
-                        android:id="@+id/txtHargaDiskonDetail"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginBottom="8dp"
-                        android:text="Rp.100.000"
-                        android:textColor="@color/cancel"
-                        android:textSize="@dimen/_12ssp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/txtHargaTtDetail"
-                        app:layout_constraintTop_toBottomOf="@+id/txtBarTtDetail" />
-
-                    <View
-                        android:id="@+id/strLine1"
-                        android:layout_width="0dp"
-                        android:layout_height="1dp"
-                        android:layout_centerVertical="true"
-                        android:paddingHorizontal="5dp"
-                        android:background="@color/cancel"
-                        app:layout_constraintBottom_toBottomOf="@+id/txtHargaTtDetail"
-                        app:layout_constraintEnd_toEndOf="@+id/txtHargaTtDetail"
-                        app:layout_constraintStart_toStartOf="@+id/txtHargaTtDetail"
-                        app:layout_constraintTop_toTopOf="@+id/txtHargaTtDetail" />
-
-
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.cardview.widget.CardView>
@@ -187,7 +159,7 @@
                     android:layout_height="match_parent">
 
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnAtc"
+                        android:id="@+id/btnAtcTT"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
@@ -200,8 +172,26 @@
                         app:cornerRadius="10dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/btnGoTt"
                         app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnGoTt"
+                        style="@style/Widget.Material3.Button.OutlinedButton"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:text="Tukar Tambah"
+                        android:textAllCaps="false"
+                        android:textColor="#5E5E5E"
+                        android:textSize="@dimen/_11sdp"
+                        app:cornerRadius="10dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:strokeColor="#5E5E5E" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

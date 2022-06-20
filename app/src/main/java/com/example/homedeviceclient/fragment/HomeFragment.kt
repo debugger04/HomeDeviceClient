@@ -13,6 +13,7 @@ import com.example.homedeviceclient.*
 import com.example.homedeviceclient.adapter.*
 import com.example.homedeviceclient.app.ApiConfig
 import com.example.homedeviceclient.helper.ResponseModel
+import com.example.homedeviceclient.helper.SharedPrefs
 import com.example.homedeviceclient.model.Category
 import com.example.homedeviceclient.model.Merk
 import com.example.homedeviceclient.model.Product
@@ -45,12 +46,17 @@ class HomeFragment : Fragment() {
     lateinit var tukarView: RecyclerView
     lateinit var flagshipView: RecyclerView
 
+    lateinit var sp: SharedPrefs
+    var email = ""
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         val view: View = inflater.inflate(R.layout.fragment_home, container, false)
+        sp = SharedPrefs(requireActivity())
         init(view)
         getBrand()
 
@@ -120,6 +126,11 @@ class HomeFragment : Fragment() {
     }
 
     fun updateSlider() {
+        val user = sp.getUser()
+        if (user != null) {
+            email = user.email
+        }
+
         val layout = LinearLayoutManager(activity)
         layout.orientation = LinearLayoutManager.HORIZONTAL
         merkView.layoutManager = layout
@@ -130,19 +141,19 @@ class HomeFragment : Fragment() {
         layout1.orientation = LinearLayoutManager.HORIZONTAL
         prodDiscView.layoutManager = layout1
         prodDiscView.setHasFixedSize(true)
-        prodDiscView.adapter = ProductDiscountAdapter(listProdDisc)
+        prodDiscView.adapter = ProductDiscountAdapter(listProdDisc, email)
 
         val layout2 = LinearLayoutManager(activity)
         layout2.orientation = LinearLayoutManager.HORIZONTAL
         prodView.layoutManager = layout2
         prodView.setHasFixedSize(true)
-        prodView.adapter = ProductAdapter(listProduct)
+        prodView.adapter = ProductAdapter(listProduct, email)
 
         val layout3 = LinearLayoutManager(activity)
         layout3.orientation = LinearLayoutManager.HORIZONTAL
         tukarView.layoutManager = layout3
         tukarView.setHasFixedSize(true)
-        tukarView.adapter = ProductAdapter(listTukarTambah)
+        tukarView.adapter = ProductAdapter(listTukarTambah, email)
 
         val layout4 = LinearLayoutManager(activity)
         layout4.orientation = LinearLayoutManager.HORIZONTAL

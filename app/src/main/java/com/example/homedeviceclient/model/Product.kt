@@ -9,4 +9,6 @@ class Product {
     val stok = 0
     val harga = 0
     val nilai = 0
+    val tt_eligible = 0
+    val jumlah = 0
 }

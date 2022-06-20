@@ -1,17 +1,21 @@
 package com.example.homedeviceclient.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ImageButton
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
+import com.example.homedeviceclient.LoginActivity
 import com.example.homedeviceclient.R
+import com.example.homedeviceclient.app.ApiConfig
+import com.example.homedeviceclient.helper.ResponseModel
 import com.example.homedeviceclient.model.Product
 import com.example.homedeviceclient.model.ProductLama
 import com.squareup.picasso.Picasso
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.text.DecimalFormat
 import java.text.NumberFormat
 
@@ -21,7 +25,7 @@ class ProductLamaAdapter(val prods: ArrayList<ProductLama>): RecyclerView.Adapte
         val imgProd: ImageView = v.findViewById(R.id.imgView)
         val txtNama: TextView = v.findViewById(R.id.txtProductName)
         val txtHarga: TextView = v.findViewById(R.id.txtProductPrice)
-        val btnDetail: ImageButton = v.findViewById(R.id.btnDetail)
+        val btnDetail: ImageButton = v.findViewById(R.id.btnDetailPrd)
         val btnAddTocart: Button = v.findViewById(R.id.btnAddToCart)
     }
 
@@ -36,6 +40,7 @@ class ProductLamaAdapter(val prods: ArrayList<ProductLama>): RecyclerView.Adapte
         val formatter: NumberFormat = DecimalFormat("#,###")
         val formattedNumber: String = formatter.format(prod.harga_jual)
         holder.txtHarga.text = "Rp."+formattedNumber
+        holder.btnAddTocart.visibility = View.GONE
     }
 
     override fun getItemCount(): Int {

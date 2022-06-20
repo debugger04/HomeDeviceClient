@@ -11,7 +11,7 @@ import com.example.homedeviceclient.DetailCategoryActivity
 import com.example.homedeviceclient.R
 import com.example.homedeviceclient.model.Category
 
-class CategoryAdapter(val kategoris: ArrayList<Category>): RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
+class CategoryAdapter (val kategoris: ArrayList<Category>): RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
     class CategoryViewHolder(val v: View): RecyclerView.ViewHolder(v) {
         val btnKtg:Button = v.findViewById(R.id.btn_go_ktg)
     }

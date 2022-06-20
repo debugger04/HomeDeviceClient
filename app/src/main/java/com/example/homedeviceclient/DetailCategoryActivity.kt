@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.homedeviceclient.adapter.ProductAdapter
 import com.example.homedeviceclient.app.ApiConfig
 import com.example.homedeviceclient.helper.ResponseModel
+import com.example.homedeviceclient.helper.SharedPrefs
 import com.example.homedeviceclient.model.Product
 import kotlinx.android.synthetic.main.activity_detail_category.*
 import retrofit2.Call
@@ -19,11 +20,15 @@ import retrofit2.Response
 class DetailCategoryActivity : AppCompatActivity() {
     var listProducts:ArrayList<Product> = ArrayList()
     var id = ""
+    lateinit var sp: SharedPrefs
+    var email = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_category)
 
         id = intent.getStringExtra("C_ID").toString()
+
+        sp = SharedPrefs(this)
 
         // calling the action bar
         val actionBar: ActionBar = supportActionBar!!
@@ -71,9 +76,13 @@ class DetailCategoryActivity : AppCompatActivity() {
     }
 
     fun updateList() {
+        val user = sp.getUser()
+        if (user != null) {
+            email = user.email
+        }
         val sg = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         categoryItemView.layoutManager = sg
         categoryItemView.setHasFixedSize(true)
-        categoryItemView.adapter = ProductAdapter(listProducts)
+        categoryItemView.adapter = ProductAdapter(listProducts, email)
     }
 }

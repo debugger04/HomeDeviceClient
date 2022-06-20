@@ -30,4 +30,14 @@ class ResponseModel {
     var tukarTambahProducts:ArrayList<Product> = ArrayList()
     var products:ArrayList<Product> = ArrayList()
     var flagships:ArrayList<ProductLama> = ArrayList()
+    var flagship = ProductLama()
+    var product = Product()
+    var brand = Merk()
+    var nilai = 0
+    var tukartambahs:ArrayList<TukarTambah> = ArrayList()
+    var tukartambah = TukarTambah()
+    var tukartambahdetail = TukarTambahDetail()
+    var forums:ArrayList<Forum> = ArrayList()
+    var total = 0
+
 }

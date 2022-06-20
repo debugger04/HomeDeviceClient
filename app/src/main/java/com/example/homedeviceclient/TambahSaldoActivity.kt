@@ -8,6 +8,7 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
@@ -32,14 +33,14 @@ import java.io.File
 class TambahSaldoActivity : AppCompatActivity() {
     lateinit var sp: SharedPrefs
     var path:String = ""
-    lateinit var rpu: RealPathUtil
+    lateinit var rpu1: RealPathUtil
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tambah_saldo)
 
         sp = SharedPrefs(this)
 
-        rpu = RealPathUtil()
+        rpu1 = RealPathUtil()
 
         // calling the action bar
         val actionBar: ActionBar = supportActionBar!!
@@ -52,7 +53,7 @@ class TambahSaldoActivity : AppCompatActivity() {
                 val intent = Intent()
                 intent.type = "image/*"
                 intent.action = Intent.ACTION_GET_CONTENT
-                startActivityForResult(intent, 10)
+                startActivityForResult(intent, 111)
             } else {
                 ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE), 1)
             }
@@ -75,9 +76,9 @@ class TambahSaldoActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if(requestCode == 10 && resultCode == Activity.RESULT_OK) {
+        if(requestCode == 111 && resultCode == Activity.RESULT_OK) {
             val filePath: Uri = data!!.data!!
-            path = rpu.getRealPath(this, filePath).toString()
+            path = rpu1.getRealPath(this, filePath).toString()
             val bitmap: Bitmap = BitmapFactory.decodeFile(path)
             imageView.setImageBitmap(bitmap)
         }

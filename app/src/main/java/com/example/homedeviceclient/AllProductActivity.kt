@@ -11,6 +11,7 @@ import com.example.homedeviceclient.adapter.MerkAdapter
 import com.example.homedeviceclient.adapter.ProductAdapter
 import com.example.homedeviceclient.app.ApiConfig
 import com.example.homedeviceclient.helper.ResponseModel
+import com.example.homedeviceclient.helper.SharedPrefs
 import com.example.homedeviceclient.model.Merk
 import com.example.homedeviceclient.model.Product
 import kotlinx.android.synthetic.main.activity_all_merk.*
@@ -21,9 +22,13 @@ import retrofit2.Response
 
 class AllProductActivity : AppCompatActivity() {
     var listProduct:ArrayList<Product> = ArrayList()
+    lateinit var sp:SharedPrefs
+    var email = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_all_product)
+
+        sp = SharedPrefs(this)
 
         // calling the action bar
         val actionBar: ActionBar = supportActionBar!!
@@ -70,9 +75,13 @@ class AllProductActivity : AppCompatActivity() {
     }
 
     fun updateList() {
+        val user = sp.getUser()
+        if (user != null) {
+            email = user.email
+        }
         val sg = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         allProductView.layoutManager = sg
         allProductView.setHasFixedSize(true)
-        allProductView.adapter = ProductAdapter(listProduct)
+        allProductView.adapter = ProductAdapter(listProduct, email)
     }
 }

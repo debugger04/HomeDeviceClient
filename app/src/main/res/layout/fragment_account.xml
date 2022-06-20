@@ -327,49 +327,114 @@
                 app:cardCornerRadius="7dp"
                 app:cardElevation="10dp">
 
-                <RelativeLayout
-                    android:id="@+id/rl5"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-                    <ImageView
-                        android:id="@+id/iconHistory"
-                        android:layout_width="@dimen/_30sdp"
-                        android:layout_height="@dimen/_30sdp"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginEnd="5dp"
-                        android:src="@drawable/ic_baseline_list_alt_24"
-                        app:tint="#00C2CB" />
+                    <RelativeLayout
+                        android:id="@+id/rl5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
-                    <TextView
-                        android:id="@+id/text5"
-                        android:layout_width="wrap_content"
+                        <ImageView
+                            android:id="@+id/iconHistory"
+                            android:layout_width="@dimen/_30sdp"
+                            android:layout_height="@dimen/_30sdp"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="5dp"
+                            android:src="@drawable/ic_baseline_list_alt_24"
+                            app:tint="#00C2CB" />
+
+                        <TextView
+                            android:id="@+id/text5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_gravity="end"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:layout_toRightOf="@id/iconHistory"
+                            android:text="Transaksi Saya"
+                            android:textColor="#4E4E4E"
+                            android:textSize="@dimen/_12ssp" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnTransaksi"
+                            style="@style/Widget.Material3.Button.TextButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerInParent="true"
+                            android:layout_gravity="end"
+                            android:layout_marginBottom="@dimen/_10sdp"
+                            android:drawableRight="@drawable/ic_baseline_arrow_forward_24"
+                            android:drawableTint="#005bcb"
+                            android:text="lihat"
+                            android:textColor="#005bcb"
+                            android:textSize="@dimen/_12ssp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/line9"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:layout_gravity="end"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:layout_toRightOf="@id/iconHistory"
-                        android:text="Transaksi Saya"
-                        android:textColor="#4E4E4E"
-                        android:textSize="@dimen/_12ssp" />
+                        android:paddingHorizontal="5dp">
 
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnTransaksi"
-                        style="@style/Widget.Material3.Button.TextButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerInParent="true"
-                        android:layout_gravity="end"
-                        android:layout_marginBottom="@dimen/_10sdp"
-                        android:drawableRight="@drawable/ic_baseline_arrow_forward_24"
-                        android:drawableTint="#005bcb"
-                        android:text="lihat"
-                        android:textColor="#005bcb"
-                        android:textSize="@dimen/_12ssp" />
-                </RelativeLayout>
+                        <View
+                            android:id="@+id/strLine9"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_centerVertical="true"
+                            android:background="#C5C5C5" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/rl12"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/iconHistoryTukar"
+                            android:layout_width="@dimen/_30sdp"
+                            android:layout_height="@dimen/_30sdp"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="5dp"
+                            android:src="@drawable/ic_baseline_list_alt_24"
+                            app:tint="#00929a" />
+
+                        <TextView
+                            android:id="@+id/text51"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_gravity="end"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:layout_toRightOf="@id/iconHistoryTukar"
+                            android:text="Transaksi Tukar Tambah"
+                            android:textColor="#4E4E4E"
+                            android:textSize="@dimen/_12ssp" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnTransaksiTukar"
+                            style="@style/Widget.Material3.Button.TextButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerInParent="true"
+                            android:layout_gravity="end"
+                            android:layout_marginBottom="@dimen/_10sdp"
+                            android:drawableRight="@drawable/ic_baseline_arrow_forward_24"
+                            android:drawableTint="#005bcb"
+                            android:text="lihat"
+                            android:textColor="#005bcb"
+                            android:textSize="@dimen/_12ssp" />
+                    </RelativeLayout>
+                </LinearLayout>
 
             </androidx.cardview.widget.CardView>
 

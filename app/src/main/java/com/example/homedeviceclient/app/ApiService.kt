@@ -243,4 +243,89 @@ interface ApiService {
     fun searchProductTt(
         @Field("nama") nama:String
     ): Call<ResponseModel>
+
+    @FormUrlEncoded
+    @POST("product/detail")
+    fun productDetails(
+        @Field("id") id :String
+    ): Call<ResponseModel>
+
+    @Multipart
+    @POST("tukar_tambah/store")
+    fun pengajuanTukarTambah(
+        @Part("email") email :RequestBody,
+        @Part("id_produk") id_produk : RequestBody,
+        @Part("nama_produk") nama_produk : RequestBody,
+        @Part("merk_produk") merk_produk : RequestBody,
+        @Part("deskripsi_produk") deskripsi_produk : RequestBody,
+        @Part foto :MultipartBody.Part
+    ): Call<ResponseModel>
+
+    @FormUrlEncoded
+    @POST("user/transaksi_t")
+    fun getTransaksiT(
+        @Field("email") email :String
+    ): Call<ResponseModel>
+
+    @FormUrlEncoded
+    @POST("user/transaksi_t_detail")
+    fun getTransaksiTDetail(
+        @Field("id") id :String
+    ): Call<ResponseModel>
+
+    @FormUrlEncoded
+    @POST("tukar_tambah/forum")
+    fun getForums(
+        @Field("id") id :String
+    ): Call<ResponseModel>
+
+    @FormUrlEncoded
+    @POST("tukar_tambah/forum/save")
+    fun saveForums(
+        @Field("email") email :String,
+        @Field("pesan") pesan :String,
+        @Field("id") id :String
+    ): Call<ResponseModel>
+
+    @FormUrlEncoded
+    @POST("tukar_tambah/bayar")
+    fun tukarTambahBayar(
+        @Field("email") email :String,
+        @Field("id") id :String,
+        @Field("cek") cek :String
+    ): Call<ResponseModel>
+
+    @FormUrlEncoded
+    @POST("user/cart")
+    fun getCart(
+        @Field("email") email :String
+    ): Call<ResponseModel>
+
+    @FormUrlEncoded
+    @POST("user/cart/update")
+    fun updateCart(
+        @Field("email") email :String,
+        @Field("id") id :String,
+        @Field("jumlah") jumlah :String
+    ): Call<ResponseModel>
+
+    @FormUrlEncoded
+    @POST("user/cart/total")
+    fun totalCart(
+        @Field("email") email :String
+    ): Call<ResponseModel>
+
+    @FormUrlEncoded
+    @POST("user/cart/delete")
+    fun deleteCart(
+        @Field("email") email :String,
+        @Field("id") id :String
+    ): Call<ResponseModel>
+
+    @FormUrlEncoded
+    @POST("user/cart/store")
+    fun addCart(
+        @Field("email") email :String,
+        @Field("id") id :String
+    ): Call<ResponseModel>
 }

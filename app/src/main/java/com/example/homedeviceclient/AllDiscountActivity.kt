@@ -11,6 +11,7 @@ import com.example.homedeviceclient.adapter.ProductAdapter
 import com.example.homedeviceclient.adapter.ProductDiscountAdapter
 import com.example.homedeviceclient.app.ApiConfig
 import com.example.homedeviceclient.helper.ResponseModel
+import com.example.homedeviceclient.helper.SharedPrefs
 import com.example.homedeviceclient.model.Product
 import kotlinx.android.synthetic.main.activity_all_discount.*
 import kotlinx.android.synthetic.main.activity_all_product.*
@@ -20,9 +21,13 @@ import retrofit2.Response
 
 class AllDiscountActivity : AppCompatActivity() {
     var listProduct:ArrayList<Product> = ArrayList()
+    lateinit var sp: SharedPrefs
+    var email = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_all_discount)
+
+        sp = SharedPrefs(this)
 
         // calling the action bar
         val actionBar: ActionBar = supportActionBar!!
@@ -69,9 +74,13 @@ class AllDiscountActivity : AppCompatActivity() {
     }
 
     fun updateList() {
+        val user = sp.getUser()
+        if (user != null) {
+            email = user.email
+        }
         val sg = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         allDiscView.layoutManager = sg
         allDiscView.setHasFixedSize(true)
-        allDiscView.adapter = ProductDiscountAdapter(listProduct)
+        allDiscView.adapter = ProductDiscountAdapter(listProduct, email)
     }
 }

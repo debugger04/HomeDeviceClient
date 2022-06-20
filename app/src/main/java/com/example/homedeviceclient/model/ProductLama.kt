@@ -8,4 +8,5 @@ class ProductLama {
     val nilai = 0
     val status = 0
     val harga_jual = 0
+    lateinit var brand:String
 }

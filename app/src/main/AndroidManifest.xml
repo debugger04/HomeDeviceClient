@@ -15,41 +15,65 @@
         android:theme="@style/Theme.HomeDeviceClient"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".BayarTukarTambahActivity"
+            android:exported="false"
+            android:label="Pembayaran"/>
+        <activity
+            android:name=".ForumActivity"
+            android:exported="false"
+            android:label="Hubungi Petugas" />
+        <activity
+            android:name=".TukarTambahDetailActivity"
+            android:exported="false"
+            android:label="Transaksi Tukar Tambah" />
+        <activity
+            android:name=".TukarTambahActivity"
+            android:exported="false"
+            android:label="Transaksi Tukar Tambah" />
+        <activity
+            android:name=".PengajuanTukarTambahActivity"
+            android:exported="false"
+            android:label="Pengajuan Tukar Tambah" />
+        <activity
+            android:name=".DetailTukarTambahActivity"
+            android:exported="false"
+            android:label="Detail Produk" />
+        <activity
             android:name=".SearchTukarTambahActivity"
             android:exported="false"
-            android:label="Cari Produk"/>
+            android:label="Cari Produk" />
         <activity
             android:name=".SearchDiscountActivity"
             android:exported="false"
-            android:label="Cari Produk"/>
+            android:label="Cari Produk" />
         <activity
             android:name=".AllDiscountActivity"
             android:exported="false"
-            android:label="Produk Diskon"/>
+            android:label="Produk Diskon" />
         <activity
             android:name=".AllTukarTambahActivity"
             android:exported="false"
-            android:label="Tukar Tambah"/>
+            android:label="Tukar Tambah" />
         <activity
             android:name=".SearchFlagshipActivity"
             android:exported="false"
-            android:label="Cari Produk"/>
+            android:label="Cari Produk" />
         <activity
             android:name=".AllFlagshipActivity"
             android:exported="false"
-            android:label="Barang Bekas"/>
+            android:label="Barang Bekas" />
         <activity
             android:name=".SearchMerkActivity"
             android:exported="false"
-            android:label="Cari Produk"/>
+            android:label="Cari Produk" />
         <activity
             android:name=".SearchKategoriActivity"
             android:exported="false"
-            android:label="Cari Produk"/>
+            android:label="Cari Produk" />
         <activity
             android:name=".AllProductActivity"
             android:exported="false"
-            android:label="Produk"/>
+            android:label="Produk" />
         <activity
             android:name=".AllMerkActivity"
             android:exported="false"

@@ -73,6 +73,16 @@ class RegisterActivity : AppCompatActivity() {
             txtPasswordReg.error = "Kolom password tidak boleh kosong"
             txtPasswordReg.requestFocus()
             return
+        } else if (txtPasswordReReg.text!!.isEmpty()) {
+            txtPasswordReg.error = "Kolom ulangi password tidak boleh kosong"
+            txtPasswordReg.requestFocus()
+            return
+        }
+
+        if (txtPasswordReg.text.toString() != txtPasswordReReg.text.toString()) {
+            txtPasswordReg.error = "Password yang diulangi tidak sama"
+            txtPasswordReg.requestFocus()
+            return
         }
 
         pbReg.visibility = View.VISIBLE

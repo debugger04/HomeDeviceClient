@@ -30,6 +30,7 @@ class AccountFragment : Fragment() {
     lateinit var btnDetailAlamat:Button
     lateinit var btnDetailWall:Button
     lateinit var btnTransaksi:Button
+    lateinit var btnTukarTambah:Button
     lateinit var btnKode:Button
     lateinit var btnMember:Button
     lateinit var txtNama:TextView
@@ -48,6 +49,7 @@ class AccountFragment : Fragment() {
         btnDetailAlamat = view.findViewById(R.id.btnDetailAlamat)
         btnDetailWall = view.findViewById(R.id.btnDetailWallet)
         btnTransaksi = view.findViewById(R.id.btnTransaksi)
+        btnTukarTambah = view.findViewById(R.id.btnTransaksiTukar)
         btnKode = view.findViewById(R.id.btnDetailCode)
         btnMember = view.findViewById(R.id.btnDetailMember)
         txtNama = view.findViewById(R.id.txtNama)
@@ -99,6 +101,12 @@ class AccountFragment : Fragment() {
 
         btnMember.setOnClickListener {
             val intent = Intent(requireActivity(), MembershipActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+        }
+
+        btnTukarTambah.setOnClickListener {
+            val intent = Intent(requireActivity(), TukarTambahActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
         }

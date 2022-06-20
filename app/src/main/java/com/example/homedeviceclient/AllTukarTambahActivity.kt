@@ -11,6 +11,7 @@ import com.example.homedeviceclient.adapter.ProductAdapter
 import com.example.homedeviceclient.adapter.ProductLamaAdapter
 import com.example.homedeviceclient.app.ApiConfig
 import com.example.homedeviceclient.helper.ResponseModel
+import com.example.homedeviceclient.helper.SharedPrefs
 import com.example.homedeviceclient.model.Product
 import com.example.homedeviceclient.model.ProductLama
 import kotlinx.android.synthetic.main.activity_all_product.*
@@ -21,6 +22,8 @@ import retrofit2.Response
 
 class AllTukarTambahActivity : AppCompatActivity() {
     var listProduct:ArrayList<Product> = ArrayList()
+    lateinit var sp: SharedPrefs
+    var email = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_all_tukar_tambah)
@@ -70,9 +73,13 @@ class AllTukarTambahActivity : AppCompatActivity() {
     }
 
     fun updateList() {
+        val user = sp.getUser()
+        if (user != null) {
+            email = user.email
+        }
         val sg = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         allTtView.layoutManager = sg
         allTtView.setHasFixedSize(true)
-        allTtView.adapter = ProductAdapter(listProduct)
+        allTtView.adapter = ProductAdapter(listProduct, email)
     }
 }

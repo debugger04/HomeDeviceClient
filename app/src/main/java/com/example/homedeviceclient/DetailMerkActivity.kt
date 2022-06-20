@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.homedeviceclient.adapter.ProductAdapter
 import com.example.homedeviceclient.app.ApiConfig
 import com.example.homedeviceclient.helper.ResponseModel
+import com.example.homedeviceclient.helper.SharedPrefs
 import com.example.homedeviceclient.model.Product
 import kotlinx.android.synthetic.main.activity_detail_category.*
 import kotlinx.android.synthetic.main.activity_detail_merk.*
@@ -20,11 +21,15 @@ import retrofit2.Response
 class DetailMerkActivity : AppCompatActivity() {
     var listProducts:ArrayList<Product> = ArrayList()
     var id = ""
+    lateinit var sp: SharedPrefs
+    var email = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_merk)
 
         id = intent.getStringExtra("M_ID").toString()
+
+        sp = SharedPrefs(this)
 
         // calling the action bar
         val actionBar: ActionBar = supportActionBar!!
@@ -72,9 +77,13 @@ class DetailMerkActivity : AppCompatActivity() {
     }
 
     fun updateList() {
+        val user = sp.getUser()
+        if (user != null) {
+            email = user.email
+        }
         val sg = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         merkItemView.layoutManager = sg
         merkItemView.setHasFixedSize(true)
-        merkItemView.adapter = ProductAdapter(listProducts)
+        merkItemView.adapter = ProductAdapter(listProducts, email)
     }
 }
