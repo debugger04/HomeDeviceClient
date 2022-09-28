@@ -254,6 +254,7 @@ interface ApiService {
     @POST("tukar_tambah/store")
     fun pengajuanTukarTambah(
         @Part("email") email :RequestBody,
+        @Part("alamat_id") alamat_id :RequestBody,
         @Part("id_produk") id_produk : RequestBody,
         @Part("nama_produk") nama_produk : RequestBody,
         @Part("merk_produk") merk_produk : RequestBody,
@@ -328,4 +329,81 @@ interface ApiService {
         @Field("email") email :String,
         @Field("id") id :String
     ): Call<ResponseModel>
+
+    @FormUrlEncoded
+    @POST("user/cart/show")
+    fun checkoutCart(
+        @Field("email") email :String
+    ): Call<ResponseModel>
+
+    @FormUrlEncoded
+    @POST("user/cart/promo")
+    fun checkoutPromo(
+        @Field("email") email :String
+    ): Call<ResponseModel>
+
+    @FormUrlEncoded
+    @POST("user/cart/hitungpromo")
+    fun hitungPromo(
+        @Field("email") email :String,
+        @Field("id") id :String,
+        @Field("tipe") tipe :String
+    ): Call<ResponseModel>
+
+    @FormUrlEncoded
+    @POST("user/cart/code")
+    fun findCode(
+        @Field("email") email :String,
+        @Field("code") code :String
+    ): Call<ResponseModel>
+
+    @FormUrlEncoded
+    @POST("user/cart/bayar")
+    fun paid(
+        @Field("email") email :String,
+        @Field("cek_koin") cek_koin :String,
+        @Field("alamat_id") alamat_id :String,
+        @Field("total_bayar") total_bayar :String,
+        @Field("kode_id") kode_id :String,
+        @Field("tipe_kode") tipe_kode :String,
+        @Field("nilai_kode") nilai_kode :String,
+        @Field("promo_id") promo_id :String,
+        @Field("tipe_promo") tipe_promo :String,
+        @Field("use_promo") use_promo :String
+    ): Call<ResponseModel>
+
+    @FormUrlEncoded
+    @POST("user/cart/bayardiskon")
+    fun discPaid(
+        @Field("email") email :String,
+        @Field("alamat_id") alamat_id :String,
+        @Field("product_id") product_id :String,
+        @Field("harga") harga :String,
+        @Field("cek_koin") cek_koin :String
+    ): Call<ResponseModel>
+
+    @FormUrlEncoded
+    @POST("flagship/detail")
+    fun flagshipDetails(
+        @Field("id") id :String
+    ): Call<ResponseModel>
+
+    @FormUrlEncoded
+    @POST("bundling/detail")
+    fun bundlingDetails(
+        @Field("id") id :String
+    ): Call<ResponseModel>
+
+    @FormUrlEncoded
+    @POST("user/cart/bayarbundle")
+    fun bundlePaid(
+        @Field("email") email :String,
+        @Field("alamat_id") alamat_id :String,
+        @Field("bundling_id") bundling_id :String,
+        @Field("harga") harga :String,
+        @Field("cek_koin") cek_koin :String
+    ): Call<ResponseModel>
+
+    @GET("bundling")
+    fun getBundling(): Call<ResponseModel>
 }

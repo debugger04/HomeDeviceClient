@@ -32,6 +32,7 @@ class DetailProductActivity : AppCompatActivity() {
     var uri = "http://192.168.0.104/ta/tugasakhir/public/product_images/"
     lateinit var sp: SharedPrefs
     var email = ""
+    var dc = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_product)
@@ -49,7 +50,22 @@ class DetailProductActivity : AppCompatActivity() {
         detailProduct()
 
         btnAtc1.setOnClickListener {
-            addToCart()
+            if (dc == 0) {
+                addToCart()
+            } else {
+                val user = sp.getUser()
+                if (user != null) {
+                    val intent = Intent(this, CheckoutDiscountActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+                    intent.putExtra("P72_ID", id)
+                    startActivity(intent)
+                } else {
+                    val intent = Intent(this, LoginActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+                    startActivity(intent)
+                    finish()
+                }
+            }
         }
     }
 
@@ -69,6 +85,7 @@ class DetailProductActivity : AppCompatActivity() {
             override fun onResponse(call: Call<ResponseModel>, response: Response<ResponseModel>) {
                 val response = response.body()!!
                 if(response.code == 200) {
+                    dc = response.nilai
                     Picasso.get().load(uri+response.product.foto).into(imageTtDetail)
                     txtNamaTtDetail.text = response.product.nama
                     txtBarTtDetail.text = response.product.barcode
@@ -78,10 +95,12 @@ class DetailProductActivity : AppCompatActivity() {
                     if (response.nilai == 0) {
                         strLine1.visibility = View.GONE
                         txtHargaDiskonDetail.visibility = View.GONE
+                        btnAtc1.text = "Tambahkan ke Keranjang"
                     } else {
                         var final = response.product.harga - (response.product.harga * response.nilai / 100)
                         val formattedNumber1: String = formatter.format(final)
                         txtHargaDiskonDetail.text = "Rp."+formattedNumber1
+                        btnAtc1.text = "Beli"
                     }
                     txtDecTtDetail.text = response.product.deskripsi
                     txtMerkTtDetail.text = response.brand.nama

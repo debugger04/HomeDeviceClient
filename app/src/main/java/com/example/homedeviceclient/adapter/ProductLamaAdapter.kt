@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
+import com.example.homedeviceclient.DetailFlagshipActivity
+import com.example.homedeviceclient.DetailProductActivity
 import com.example.homedeviceclient.LoginActivity
 import com.example.homedeviceclient.R
 import com.example.homedeviceclient.app.ApiConfig
@@ -41,6 +43,12 @@ class ProductLamaAdapter(val prods: ArrayList<ProductLama>): RecyclerView.Adapte
         val formattedNumber: String = formatter.format(prod.harga_jual)
         holder.txtHarga.text = "Rp."+formattedNumber
         holder.btnAddTocart.visibility = View.GONE
+        holder.btnDetail.setOnClickListener {
+            val intent = Intent(holder.v.context, DetailFlagshipActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+            intent.putExtra("P3_ID", prod.id.toString())
+            holder.v.context.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int {

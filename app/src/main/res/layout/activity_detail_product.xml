@@ -194,7 +194,7 @@
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="8dp"
                         android:layout_marginBottom="8dp"
-                        android:text="Beli"
+                        android:text="Tambahkan ke Keranjang"
                         android:textAllCaps="false"
                         android:textSize="@dimen/_11sdp"
                         app:cornerRadius="10dp"

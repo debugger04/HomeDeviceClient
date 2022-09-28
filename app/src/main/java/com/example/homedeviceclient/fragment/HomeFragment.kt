@@ -14,10 +14,7 @@ import com.example.homedeviceclient.adapter.*
 import com.example.homedeviceclient.app.ApiConfig
 import com.example.homedeviceclient.helper.ResponseModel
 import com.example.homedeviceclient.helper.SharedPrefs
-import com.example.homedeviceclient.model.Category
-import com.example.homedeviceclient.model.Merk
-import com.example.homedeviceclient.model.Product
-import com.example.homedeviceclient.model.ProductLama
+import com.example.homedeviceclient.model.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -39,13 +36,14 @@ class HomeFragment : Fragment() {
     var listProduct:ArrayList<Product> = ArrayList()
     var listTukarTambah:ArrayList<Product> = ArrayList()
     var listFlagship:ArrayList<ProductLama> = ArrayList()
+    var listBundle:ArrayList<Bundling> = ArrayList()
     var v:View ?= null
     lateinit var merkView: RecyclerView
     lateinit var prodDiscView: RecyclerView
     lateinit var prodView: RecyclerView
     lateinit var tukarView: RecyclerView
     lateinit var flagshipView: RecyclerView
-
+    lateinit var bundleView: RecyclerView
     lateinit var sp: SharedPrefs
     var email = ""
 
@@ -100,6 +98,12 @@ class HomeFragment : Fragment() {
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
         }
+
+        btnLihatBundle.setOnClickListener {
+            val intent = Intent(requireActivity(), BundlingActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+        }
     }
 
     private fun getBrand() {
@@ -113,6 +117,7 @@ class HomeFragment : Fragment() {
                     listProduct = response.nonDiscProducts
                     listTukarTambah = response.tukarTambahProducts
                     listFlagship = response.flagships
+                    listBundle = response.bundlings
                     updateSlider()
                 } else {
                     Toast.makeText(activity, "Kesalahan : "+response.msg, Toast.LENGTH_SHORT).show()
@@ -160,6 +165,12 @@ class HomeFragment : Fragment() {
         flagshipView.layoutManager = layout4
         flagshipView.setHasFixedSize(true)
         flagshipView.adapter = ProductLamaAdapter(listFlagship)
+
+        val layout5 = LinearLayoutManager(activity)
+        layout5.orientation = LinearLayoutManager.HORIZONTAL
+        bundleView.layoutManager = layout5
+        bundleView.setHasFixedSize(true)
+        bundleView.adapter = BundlingAdapter(listBundle)
     }
 
     fun init(view: View) {
@@ -168,5 +179,6 @@ class HomeFragment : Fragment() {
         prodView = view.findViewById(R.id.prodView)
         tukarView = view.findViewById(R.id.tukarTambahView)
         flagshipView = view.findViewById(R.id.flagshipView)
+        bundleView = view.findViewById(R.id.bundleView)
     }
 }

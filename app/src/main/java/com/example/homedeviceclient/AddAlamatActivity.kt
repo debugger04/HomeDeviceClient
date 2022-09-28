@@ -100,10 +100,7 @@ class AddAlamatActivity : AppCompatActivity() {
             override fun onResponse(call: Call<ResponseModel>, response: Response<ResponseModel>) {
                 pbAa.visibility = View.GONE
                 if (response.body()!!.code == 200) {
-                    val intent = Intent(this@AddAlamatActivity, AlamatActivity::class.java)
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
-                    startActivity(intent)
-                    finish()
+                    onBackPressed()
                     Toast.makeText(this@AddAlamatActivity, "Alamat telah ditambahkan!", Toast.LENGTH_SHORT).show()
                 } else {
                     Toast.makeText(this@AddAlamatActivity, "Kesalahan : "+response.body()!!.msg, Toast.LENGTH_SHORT).show()

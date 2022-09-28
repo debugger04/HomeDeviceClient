@@ -30,7 +30,7 @@ class TransaksiDetailAdapter(val transaksidetails: ArrayList<TransaksiDetail>): 
         Picasso.get().load(uri+transaksidetail.pfoto).into(holder.imgFoto)
         holder.txtNama.text = transaksidetail.pnama
         val formatter: NumberFormat = DecimalFormat("#,###")
-        val formattedNumber: String = formatter.format(transaksidetail.pharga)
+        val formattedNumber: String = formatter.format(transaksidetail.harga)
         holder.txtHarga.text ="Rp."+formattedNumber
         holder.txtJumlah.text = transaksidetail.jumlah.toString() + " unit"
     }

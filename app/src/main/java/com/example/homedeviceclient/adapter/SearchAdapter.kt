@@ -9,6 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.homedeviceclient.DetailProductActivity
 import com.example.homedeviceclient.R
 import com.example.homedeviceclient.TransaksiDetailActivity
 import com.example.homedeviceclient.model.Product
@@ -38,12 +39,12 @@ class SearchAdapter (val products: ArrayList<Product>): RecyclerView.Adapter<Sea
         val formattedNumber: String = formatter.format(product.harga)
         holder.txtHarga.text = formattedNumber
         Picasso.get().load(uri+product.foto).into(holder.imgProg)
-//        holder.btnDetail.setOnClickListener {
-//            val intent = Intent(holder.v.context, TransaksiDetailActivity::class.java)
-//            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
-//            intent.putExtra("ORDER_ID", transaksi.order_id.toString())
-//            holder.v.context.startActivity(intent)
-//        }
+        holder.btnDetail.setOnClickListener {
+            val intent = Intent(holder.v.context, DetailProductActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+            intent.putExtra("P7_ID", product.id.toString())
+            holder.v.context.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int {

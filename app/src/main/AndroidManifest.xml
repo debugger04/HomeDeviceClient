@@ -15,9 +15,45 @@
         android:theme="@style/Theme.HomeDeviceClient"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".BundlingActivity"
+            android:exported="false"
+            android:label="Bundling"/>
+        <activity
+            android:name=".CheckoutBundlingActivity"
+            android:exported="false"
+            android:label="Checkout"/>
+        <activity
+            android:name=".DetailBundlingActivity"
+            android:exported="false"
+            android:label="Bundling"/>
+        <activity
+            android:name=".DetailFlagshipActivity"
+            android:exported="false"
+            android:label="Flagship"/>
+        <activity
+            android:name=".CheckoutDiscountActivity"
+            android:exported="false"
+            android:label="Checkout"/>
+        <activity
+            android:name=".ListKodeVoucherActivity"
+            android:exported="false"
+            android:label="Kode Voucher"/>
+        <activity
+            android:name=".ListPromoActivity"
+            android:exported="false"
+            android:label="Promo"/>
+        <activity
+            android:name=".ListAlamatActivity"
+            android:exported="false"
+            android:label="Pilih Alamat" />
+        <activity
+            android:name=".CheckoutActivity"
+            android:exported="false"
+            android:label="Checkout" />
+        <activity
             android:name=".BayarTukarTambahActivity"
             android:exported="false"
-            android:label="Pembayaran"/>
+            android:label="Pembayaran" />
         <activity
             android:name=".ForumActivity"
             android:exported="false"

@@ -39,5 +39,9 @@ class ResponseModel {
     var tukartambahdetail = TukarTambahDetail()
     var forums:ArrayList<Forum> = ArrayList()
     var total = 0
-
+    var promoc:ArrayList<Promo> = ArrayList()
+    var promob:ArrayList<Promo> = ArrayList()
+    var bundlings:ArrayList<Bundling> = ArrayList()
+    var bundling = Bundling()
+    var bundle_item:ArrayList<BundlingItem> = ArrayList()
 }

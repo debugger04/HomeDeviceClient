@@ -1,5 +1,6 @@
 package com.example.homedeviceclient.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,6 +8,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.homedeviceclient.DetailProductActivity
 import com.example.homedeviceclient.R
 import com.example.homedeviceclient.model.Product
 import com.squareup.picasso.Picasso
@@ -35,12 +37,12 @@ class SearchDiscountAdapter (val products: ArrayList<Product>): RecyclerView.Ada
         holder.txtHarga.text = formattedNumber
         holder.txtNilai.text = product.nilai.toString()+"% off"
         Picasso.get().load(uri+product.foto).into(holder.imgProg)
-//        holder.btnDetail.setOnClickListener {
-//            val intent = Intent(holder.v.context, TransaksiDetailActivity::class.java)
-//            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
-//            intent.putExtra("ORDER_ID", transaksi.order_id.toString())
-//            holder.v.context.startActivity(intent)
-//        }
+        holder.btnDetail.setOnClickListener {
+            val intent = Intent(holder.v.context, DetailProductActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+            intent.putExtra("P7_ID", product.id.toString())
+            holder.v.context.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int {

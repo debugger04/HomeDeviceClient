@@ -1,6 +1,8 @@
 package com.example.homedeviceclient
 
 import android.app.Activity
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -9,6 +11,7 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.core.app.ActivityCompat
@@ -18,6 +21,7 @@ import com.example.homedeviceclient.helper.RealPathUtil
 import com.example.homedeviceclient.helper.ResponseModel
 import com.example.homedeviceclient.helper.SharedPrefs
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.activity_checkout_bundling.*
 import kotlinx.android.synthetic.main.activity_detail_tukar_tambah.*
 import kotlinx.android.synthetic.main.activity_pengajuan_tukar_tambah.*
 import kotlinx.android.synthetic.main.activity_tambah_saldo.*
@@ -45,6 +49,8 @@ class PengajuanTukarTambahActivity : AppCompatActivity() {
 
         sp = SharedPrefs(this)
 
+        sp.setAlamat(null)
+
         rpu = RealPathUtil()
 
         // calling the action bar
@@ -69,16 +75,63 @@ class PengajuanTukarTambahActivity : AppCompatActivity() {
         btnSendPengajuanTt.setOnClickListener {
             pengajuanTukarTambah()
         }
+
+        btn_tambahAlamatX.setOnClickListener {
+            val intent = Intent(this, ListAlamatActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        alamatUtama()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.getItemId()) {
             android.R.id.home -> {
-                finish()
+                val builder: AlertDialog.Builder = AlertDialog.Builder(this)
+                builder.setCancelable(true)
+                builder.setTitle("Batalkan Transaksi")
+                builder.setMessage("Yakin untuk batal melakukan transaksi ?")
+                builder.setPositiveButton("Batal",
+                    DialogInterface.OnClickListener { dialog, id ->
+                        dialog.cancel()
+                        sp.setAlamat(null)
+                        finish()
+                    })
+                builder.setNegativeButton("Lanjut",
+                    DialogInterface.OnClickListener { dialog, id ->
+                        dialog.cancel()
+                    })
+
+                val dialog: AlertDialog = builder.create()
+                dialog.show()
                 return true
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onBackPressed() {
+        val builder: AlertDialog.Builder = AlertDialog.Builder(this)
+        builder.setCancelable(true)
+        builder.setTitle("Batalkan Transaksi")
+        builder.setMessage("Yakin untuk batal melakukan transaksi ?")
+        builder.setPositiveButton("Batal",
+            DialogInterface.OnClickListener { dialog, id ->
+                dialog.cancel()
+                sp.setAlamat(null)
+                super.onBackPressed()
+            })
+        builder.setNegativeButton("Lanjut",
+            DialogInterface.OnClickListener { dialog, id ->
+                dialog.cancel()
+            })
+
+        val dialog: AlertDialog = builder.create()
+        dialog.show()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -120,6 +173,27 @@ class PengajuanTukarTambahActivity : AppCompatActivity() {
         })
     }
 
+    private fun alamatUtama() {
+        if (sp.getUser() == null) {
+            val intent = Intent(this, LoginActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+            return
+        }
+
+        if (sp.getAlamat() == null) {
+            div_alamatX.visibility = View.GONE
+            div_kosongX.visibility = View.VISIBLE
+        } else {
+            val alamat = sp.getAlamat()!!
+            div_alamatX.visibility = View.VISIBLE
+            div_kosongX.visibility = View.GONE
+            tv_namaX.text = alamat.nama
+            tv_phoneX.text = alamat.no_telp
+            tv_alamatX.text =alamat.jalan + ", RT." + alamat.rt + "/RW." + alamat.rw + ", " + alamat.kecamatan + ", " + alamat.kab_kota + ", " + alamat.provinsi
+        }
+    }
+
     private fun pengajuanTukarTambah() {
         if (sp.getUser() == null) {
             val intent = Intent(this, LoginActivity::class.java)
@@ -144,34 +218,42 @@ class PengajuanTukarTambahActivity : AppCompatActivity() {
 
         val user = sp.getUser()!!
 
-        var file: File = File(path)
-        var fileReq: RequestBody = RequestBody.create(MediaType.parse("multipart/form-data"), file)
-        var body: MultipartBody.Part = MultipartBody.Part.createFormData("foto", file.name, fileReq)
+        if (sp.getAlamat() == null) {
+            Toast.makeText(this@PengajuanTukarTambahActivity, "Pilih alamat terlebih dahulu !", Toast.LENGTH_SHORT).show()
+            return
+        } else {
+            val alamat = sp.getAlamat()!!
 
-        var userEmail: RequestBody = RequestBody.create(MediaType.parse("multipart/form-data"), user.email)
-        var id_produk: RequestBody = RequestBody.create(MediaType.parse("multipart/form-data"), id)
-        var nama_produk: RequestBody = RequestBody.create(MediaType.parse("multipart/form-data"), txtNamaProdukBekas.text.toString())
-        var merk_produk: RequestBody = RequestBody.create(MediaType.parse("multipart/form-data"), txtMerkProdukBekas.text.toString())
-        var deskripsi_produk: RequestBody = RequestBody.create(MediaType.parse("multipart/form-data"), txtDescProdukBekas.text.toString())
+            var file: File = File(path)
+            var fileReq: RequestBody = RequestBody.create(MediaType.parse("multipart/form-data"), file)
+            var body: MultipartBody.Part = MultipartBody.Part.createFormData("foto", file.name, fileReq)
 
-        ApiConfig.instanceRetrofit.pengajuanTukarTambah(userEmail, id_produk, nama_produk, merk_produk, deskripsi_produk, body).enqueue(object :
-            Callback<ResponseModel> {
-            override fun onResponse(call: Call<ResponseModel>, response: Response<ResponseModel>) {
-                val response = response.body()!!
-                if(response.code == 200) {
-                    val intent = Intent(this@PengajuanTukarTambahActivity, MainActivity::class.java)
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
-                    startActivity(intent)
-                    finish()
-                    Toast.makeText(this@PengajuanTukarTambahActivity, "Berhasil melakukan pengajuan", Toast.LENGTH_SHORT).show()
-                } else {
-                    Toast.makeText(this@PengajuanTukarTambahActivity, "Kesalahan : "+response.msg, Toast.LENGTH_SHORT).show()
+            var userEmail: RequestBody = RequestBody.create(MediaType.parse("multipart/form-data"), user.email)
+            var alamat_id: RequestBody = RequestBody.create(MediaType.parse("multipart/form-data"), alamat.id.toString())
+            var id_produk: RequestBody = RequestBody.create(MediaType.parse("multipart/form-data"), id)
+            var nama_produk: RequestBody = RequestBody.create(MediaType.parse("multipart/form-data"), txtNamaProdukBekas.text.toString())
+            var merk_produk: RequestBody = RequestBody.create(MediaType.parse("multipart/form-data"), txtMerkProdukBekas.text.toString())
+            var deskripsi_produk: RequestBody = RequestBody.create(MediaType.parse("multipart/form-data"), txtDescProdukBekas.text.toString())
+
+            ApiConfig.instanceRetrofit.pengajuanTukarTambah(userEmail, alamat_id, id_produk, nama_produk, merk_produk, deskripsi_produk, body).enqueue(object :
+                Callback<ResponseModel> {
+                override fun onResponse(call: Call<ResponseModel>, response: Response<ResponseModel>) {
+                    val response = response.body()!!
+                    if(response.code == 200) {
+                        val intent = Intent(this@PengajuanTukarTambahActivity, MainActivity::class.java)
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+                        startActivity(intent)
+                        finish()
+                        Toast.makeText(this@PengajuanTukarTambahActivity, "Berhasil melakukan pengajuan", Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(this@PengajuanTukarTambahActivity, "Kesalahan : "+response.msg, Toast.LENGTH_SHORT).show()
+                    }
                 }
-            }
 
-            override fun onFailure(call: Call<ResponseModel>, t: Throwable) {
-                Toast.makeText(this@PengajuanTukarTambahActivity, "Kesalahan : "+t.message, Toast.LENGTH_SHORT).show()
-            }
-        })
+                override fun onFailure(call: Call<ResponseModel>, t: Throwable) {
+                    Toast.makeText(this@PengajuanTukarTambahActivity, "Kesalahan : "+t.message, Toast.LENGTH_SHORT).show()
+                }
+            })
+        }
     }
 }

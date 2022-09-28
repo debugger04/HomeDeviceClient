@@ -15,6 +15,9 @@ import com.example.homedeviceclient.helper.ResponseModel
 import com.example.homedeviceclient.helper.SharedPrefs
 import com.example.homedeviceclient.model.Alamat
 import kotlinx.android.synthetic.main.activity_alamat.*
+import kotlinx.android.synthetic.main.activity_alamat.alamatView
+import kotlinx.android.synthetic.main.activity_alamat.fabAdd
+import kotlinx.android.synthetic.main.activity_list_alamat.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -39,8 +42,15 @@ class AlamatActivity : AppCompatActivity() {
 
         fabAdd.setOnClickListener {
             val intent = Intent(this, AddAlamatActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        getAlamat()
     }
 
     private fun getAlamat() {
@@ -58,10 +68,11 @@ class AlamatActivity : AppCompatActivity() {
             override fun onResponse(call: Call<ResponseModel>, response: Response<ResponseModel>) {
                 val response = response.body()!!
                 if(response.code == 200) {
+                    txtKosongd.visibility = View.GONE
                     listAlamat = response.alamats
                     updateList()
                 } else {
-                    Toast.makeText(this@AlamatActivity, "Kesalahan : "+response.msg, Toast.LENGTH_SHORT).show()
+                    txtKosongd.visibility = View.VISIBLE
                 }
             }
 

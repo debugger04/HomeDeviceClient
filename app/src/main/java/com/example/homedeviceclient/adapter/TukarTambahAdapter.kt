@@ -34,9 +34,9 @@ class TukarTambahAdapter (val tukarTambahs: ArrayList<TukarTambah>): RecyclerVie
             holder.txtStatus.text = "Diterima"
         } else if (tt.status == 2) {
             holder.txtStatus.text = "Ditolak"
-        } else if (tt.status == 4) {
+        } else if (tt.status == 3) {
             holder.txtStatus.text = "Sudah dibayar"
-        } else if (tt.status == 5) {
+        } else if (tt.status == 4) {
             holder.txtStatus.text = "Sudah dikirim"
         }
         holder.btnDetail.setOnClickListener {

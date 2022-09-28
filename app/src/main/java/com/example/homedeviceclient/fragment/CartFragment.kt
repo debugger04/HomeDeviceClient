@@ -1,16 +1,21 @@
 package com.example.homedeviceclient.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.homedeviceclient.CheckoutActivity
+import com.example.homedeviceclient.LoginActivity
 import com.example.homedeviceclient.R
+import com.example.homedeviceclient.TukarTambahDetailActivity
 import com.example.homedeviceclient.adapter.CartAdapter
 import com.example.homedeviceclient.app.ApiConfig
 import com.example.homedeviceclient.helper.ResponseModel
@@ -41,6 +46,7 @@ class CartFragment : Fragment() {
     lateinit var ln2:LinearLayout
     lateinit var txtJumlah:TextView
     lateinit var adapter:CartAdapter
+    lateinit var btnCheckout:Button
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -53,7 +59,22 @@ class CartFragment : Fragment() {
         ln1 = view.findViewById(R.id.ln1)
         ln2 = view.findViewById(R.id.ln2)
         txtJumlah = view.findViewById(R.id.txtSub)
-        getCart()
+        btnCheckout = view.findViewById(R.id.btn_Checkout)
+        if (sp.getStatusLogin()) {
+            getCart()
+        }
+
+        btnCheckout.setOnClickListener {
+            if (sp.getStatusLogin()) {
+                val intent = Intent(requireActivity(), CheckoutActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+                startActivity(intent)
+            } else {
+                val intent = Intent(requireActivity(), LoginActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+                startActivity(intent)
+            }
+        }
 
         return view
     }

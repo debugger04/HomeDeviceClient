@@ -12,5 +12,4 @@ class BottomNavAdapter(val activity: AppCompatActivity, val fragments: ArrayList
     override fun createFragment(position: Int): Fragment {
         return fragments[position]
     }
-
 }

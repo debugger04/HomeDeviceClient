@@ -1,5 +1,6 @@
 package com.example.homedeviceclient.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,6 +8,8 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.homedeviceclient.DetailFlagshipActivity
+import com.example.homedeviceclient.DetailProductActivity
 import com.example.homedeviceclient.R
 import com.example.homedeviceclient.model.Product
 import com.example.homedeviceclient.model.ProductLama
@@ -34,12 +37,12 @@ class SearchFlagshipAdapter (val flagships: ArrayList<ProductLama>): RecyclerVie
         val formattedNumber: String = formatter.format(flagship.harga_jual)
         holder.txtHarga.text = formattedNumber
         Picasso.get().load(uri+flagship.foto).into(holder.imgProg)
-//        holder.btnDetail.setOnClickListener {
-//            val intent = Intent(holder.v.context, TransaksiDetailActivity::class.java)
-//            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
-//            intent.putExtra("ORDER_ID", transaksi.order_id.toString())
-//            holder.v.context.startActivity(intent)
-//        }
+        holder.btnDetail.setOnClickListener {
+            val intent = Intent(holder.v.context, DetailFlagshipActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+            intent.putExtra("P3_ID", flagship.id.toString())
+            holder.v.context.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int {

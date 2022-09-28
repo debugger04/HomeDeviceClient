@@ -229,7 +229,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
                     android:layout_marginTop="8dp"
-                    android:text="Barang Flagship!"
+                    android:text="Barang Bekas Kualitas Kelas!"
                     android:textColor="@color/colorPrimaryVariant"
                     android:textSize="@dimen/_13ssp"
                     android:textStyle="bold"
@@ -251,6 +251,45 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/flagshipView"
+                android:layout_width="match_parent"
+                android:layout_height="240dp"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/product_home_card_layout"/>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/textView10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Beli 1 Dapat Banyak!"
+                    android:textColor="@color/colorPrimaryVariant"
+                    android:textSize="@dimen/_13ssp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/btnLihatBundle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:text="lihat semua"
+                    android:drawableEnd="@drawable/ic_baseline_arrow_forward_24"
+                    android:textSize="@dimen/_11ssp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/bundleView"
                 android:layout_width="match_parent"
                 android:layout_height="240dp"
                 android:layout_marginTop="8dp"
